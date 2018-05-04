@@ -1,4 +1,4 @@
-package edu.tacoma.uw.css.quandm.chainganggamma;
+package edu.tacoma.uw.css.uwtchaingang.chaingang;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import edu.tacoma.uw.css.quandm.chainganggamma.ChainListFragment.OnListFragmentInteractionListener;
-import edu.tacoma.uw.css.quandm.chainganggamma.chain.ChainContent.ChainItem;
-
 import java.util.List;
+
+import edu.tacoma.uw.css.uwtchaingang.chaingang.ChainListFragment.OnListFragmentInteractionListener;
+import edu.tacoma.uw.css.uwtchaingang.chaingang.chain.ChainContent.ChainItem;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link ChainItem} and makes a call to the

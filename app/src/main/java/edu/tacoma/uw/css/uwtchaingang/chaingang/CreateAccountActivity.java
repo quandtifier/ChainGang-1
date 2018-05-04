@@ -1,8 +1,8 @@
-package edu.tacoma.uw.css.quandm.chainganggamma;
+package edu.tacoma.uw.css.uwtchaingang.chaingang;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 public class CreateAccountActivity extends AppCompatActivity {

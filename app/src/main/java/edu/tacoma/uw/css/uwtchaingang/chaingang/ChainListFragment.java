@@ -1,4 +1,4 @@
-package edu.tacoma.uw.css.quandm.chainganggamma;
+package edu.tacoma.uw.css.uwtchaingang.chaingang;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import edu.tacoma.uw.css.quandm.chainganggamma.chain.ChainContent;
-import edu.tacoma.uw.css.quandm.chainganggamma.chain.ChainContent.ChainItem;
+import edu.tacoma.uw.css.uwtchaingang.chaingang.chain.ChainContent.ChainItem;
+import edu.tacoma.uw.css.uwtchaingang.chaingang.chain.ChainContent;
 
 /**
  * A fragment representing a list of Items.
