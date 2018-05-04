@@ -5,6 +5,6 @@
     android:id="@+id/chain_fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.tacoma.uw.css.quandm.chainganggamma.ChooseChainActivity">
+    tools:context="edu.tacoma.uw.css.uwtchaingang.chaingang.ChooseChainActivity">
 
 </FrameLayout>
