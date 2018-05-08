@@ -5,9 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -29,7 +27,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     /**
      * Constant with a link to php code which will handle adding a new user to database
      */
-    private final static String USER_ADD_URL
+    private final static String MEMBER_ADD_URL
             = "https://chaingang.000webhostapp.com/addUser.php?";
 
     /**
@@ -62,7 +60,7 @@ public class CreateAccountActivity extends AppCompatActivity {
      */
     private EditText mConfirmPassword;
 
-    private UserAddListener mListener;
+    private MemberAddListener mListener;
 
     /**
      * Required empty public constructor
@@ -74,49 +72,36 @@ public class CreateAccountActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
-    }
-
-    //@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.activity_create_account, container, false);
-
-        mFirstName = (EditText) v.findViewById(R.id.firstname);
-        mLastName = (EditText) v.findViewById(R.id.lastname);
-        mEmail = (EditText) v.findViewById(R.id.email);
-        mLogin = (EditText) v.findViewById(R.id.login);
-        mPassword = (EditText) v.findViewById(R.id.password);
-        mConfirmPassword = (EditText) v.findViewById(R.id.confirmpassword);
-
-
-        /*Button button= (Button)findViewById(R.id.buttonId);
-button.setOnClickListener(new View.OnClickListener(){
-@Override
-public void onClick(View view) {
-    // click handling code
-   }
-});*/
-
-        Button addUserButton = (Button) v.findViewById(R.id.createAccountButton);
+        Button addUserButton = (Button) findViewById(R.id.createAccountButton);
         addUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mFirstName = (EditText) findViewById(R.id.firstname);
+                mLastName = (EditText) findViewById(R.id.lastname);
+                mEmail = (EditText) findViewById(R.id.email);
+                mLogin = (EditText) findViewById(R.id.login);
+                mPassword = (EditText) findViewById(R.id.password);
+                mConfirmPassword = (EditText) findViewById(R.id.confirmpassword);
                 String url = buildUserURL(v);
-                mListener.addUser(url);
+                addMember(url);
+                Log.v("CreateAccountActivity", "Felt the button");
             }
         });
+    }
 
 
-        return v;
+    public void addMember(String url) {
+        AddMemberTask task = new AddMemberTask();
+        task.execute(new String[]{url.toString()});
+
     }
 
 
     /**
      *
      */
-    public interface UserAddListener {
-        public void addUser(String url);
+    public interface MemberAddListener {
+        public void addMember(String url);
     }
 
     /**
@@ -126,28 +111,30 @@ public void onClick(View view) {
      */
     private String buildUserURL(View v) {
 
-        StringBuilder sb = new StringBuilder(USER_ADD_URL);
-
+        StringBuilder sb = new StringBuilder(MEMBER_ADD_URL);
         try {
+            Log.v("CreateAccountActivity", "build url                            1");
 
-            String firstName = mFirstName.getText().toString();
+            String email = mEmail.getText().toString();
             sb.append("email=");
-            sb.append(URLEncoder.encode(firstName, "UTF-8"));
+            sb.append(URLEncoder.encode(email, "UTF-8"));
 
-
+            Log.v("CreateAccountActivity", "build url                            2");
             String lastName = mLastName.getText().toString();
             sb.append("&firstname=");
             sb.append(URLEncoder.encode(lastName, "UTF-8"));
 
-
-            String email = mEmail.getText().toString();
+            Log.v("CreateAccountActivity", "build url                            3");
+            String firstName = mFirstName.getText().toString();
             sb.append("&lastname=");
-            sb.append(URLEncoder.encode(email, "UTF-8"));
+            sb.append(URLEncoder.encode(firstName, "UTF-8"));
 
+            Log.v("CreateAccountActivity", "build url                            4");
             String login = mLogin.getText().toString();
             sb.append("&login=");
             sb.append(URLEncoder.encode(login, "UTF-8"));
 
+            Log.v("CreateAccountActivity", "build url                            5" + mPassword.getText().toString() + "jdjjdjjdj");
             String password = mPassword.getText().toString();
             sb.append("&password=");
             sb.append(URLEncoder.encode(password, "UTF-8"));
@@ -165,7 +152,7 @@ public void onClick(View view) {
     /**
      *
      */
-    private class AddUserTask extends AsyncTask<String, Void, String> {
+    private class AddMemberTask extends AsyncTask<String, Void, String> {
 
 
         @Override
@@ -236,7 +223,7 @@ public void onClick(View view) {
     //@Override
     public void addUser(String url) {
 
-        AddUserTask task = new AddUserTask();
+        AddMemberTask task = new AddMemberTask();
         task.execute(new String[]{url.toString()});
 
 // Takes you back to the previous fragment by popping the current fragment out.

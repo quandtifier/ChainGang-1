@@ -19,7 +19,7 @@ public class ChainContent {
     public static final List<ChainItem> ITEMS = new ArrayList<ChainItem>();
 
     /**
-     * A map of sample (dummy) items, by ID.
+     * A ChainItem map, by ID.
      */
     public static final Map<String, ChainItem> ITEM_MAP = new HashMap<String, ChainItem>();
 
